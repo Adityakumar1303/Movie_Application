@@ -1,0 +1,44 @@
+version: "3.3"
+
+services:
+  movieservice:
+    image: movie_image
+    container_name: movie_container
+    build: MovieApp/
+    restart: always
+    network_mode: host
+    ports:
+      - 4444:4444
+    depends_on:
+      - mongoservice
+
+  mongoservice:
+    image: mongo:3.4-jessie
+    container_name: mongodb_container
+    network_mode: host
+    ports:
+      - 27017:27017
+
+  authenticationservice:
+    image: authentication_image
+    container_name: authentication_container
+    build: Jwt/
+    restart: always
+    network_mode: host
+    ports:
+      - 7777:7777
+    depends_on:
+      - mysqlservice
+
+
+  mysqlservice:
+    image: mysql:5.5
+    container_name: mysql_container
+    network_mode: host
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dheerajraj@mysql@363
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: dheerajraj@mysql@363
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
