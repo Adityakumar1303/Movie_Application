@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Movie-Application</name>
 	<packaging>pom</packaging>
-	<description>Demo project for Spring Boot</description>
+	<description>Microservices of Movie Application</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
